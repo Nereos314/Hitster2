@@ -20,7 +20,7 @@
   <! — include the library — >
   <script src="js/html5-qrcode.min.js"></script>
   <script> 
-    const html5QrCode = new Html5Qrcode("reader");
+    const html5QrCode = new Html5Qrcode("qr-reader");
     const qrCodeSuccessCallback = (decodedText, decodedResult) => {
       /* handle success */
       document.getElementById("result").textContent = decodedText
