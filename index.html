@@ -20,13 +20,18 @@
   <! — include the library — >
   <script src="js/html5-qrcode.min.js"></script>
   <script> 
-    function onScanSuccess(decodedText, decodedResult) {
-      // handle the scanned code as you like, for example:
-      console.log(`Code matched = ${decodedText}`, decodedResult);
-    }
-    var html5QrcodeScanner = new Html5QrcodeScanner(
-      "qr-reader", { fps: 10, qrbox: 250 });
-    html5QrcodeScanner.render(onScanSuccess);
-</script>
+    const html5QrCode = new Html5Qrcode("reader");
+    const qrCodeSuccessCallback = (decodedText, decodedResult) => {
+      /* handle success */
+      document.getElementById("result").textContent = decodedText
+    };
+    const config = { fps: 10, qrbox: { width: 250, height: 250 } };
+
+    // If you want to prefer back camera
+    html5QrCode.start({ facingMode: "environment" }, config, qrCodeSuccessCallback);
+  </script>
+  <div id="result"></div>
 </body>
 </html>
+
+<!-- https://scanapp.org/html5-qrcode-docs/docs/intro#easy-mode---with-end-to-end-scanner-user-interface -->
